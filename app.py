@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, redirect, url_for
 
 app = Flask(__name__)
 
@@ -7,13 +7,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>Discord Bot Showcase</title>
+    <title>The Aeroplane Company</title>
     <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap\" rel=\"stylesheet\">
     <style>
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom, #000000, #1a1a1a);
+            background: linear-gradient(to bottom, #1e1e1e, #000000);
             color: white;
             overflow-x: hidden;
         }
@@ -35,7 +35,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             gap: 0.5rem;
         }
         .logo span {
-            color: #5865F2;
+            color: #00aaff;
         }
         nav {
             display: flex;
@@ -48,7 +48,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             transition: color 0.3s;
         }
         nav a:hover {
-            color: #5865F2;
+            color: #00aaff;
         }
         .hero {
             text-align: center;
@@ -69,7 +69,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             margin-top: 20px;
             display: inline-block;
             padding: 15px 30px;
-            background-color: #5865F2;
+            background-color: #00aaff;
             color: white;
             text-transform: uppercase;
             font-weight: 600;
@@ -79,7 +79,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             animation: popIn 2s ease-in-out;
         }
         .cta:hover {
-            background-color: #4752C4;
+            background-color: #0088cc;
         }
         .features {
             padding: 50px 10%;
@@ -88,7 +88,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             gap: 20px;
         }
         .feature {
-            background-color: #1e1e1e;
+            background-color: #2a2a2a;
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
@@ -103,11 +103,30 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             font-size: 1rem;
             line-height: 1.5;
         }
+        .widgets {
+            padding: 50px 10%;
+            background: #121212;
+            text-align: center;
+        }
+        .widget {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+            border: 2px solid #00aaff;
+            border-radius: 10px;
+            color: white;
+            background-color: #1e1e1e;
+            cursor: pointer;
+            animation: popIn 1.5s ease-in-out;
+        }
         footer {
             text-align: center;
             padding: 20px 10%;
             background-color: #111111;
             color: #888;
+        }
+        .btn {
+            cursor: pointer;
         }
         @keyframes fadeIn {
             0% { opacity: 0; }
@@ -122,40 +141,60 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             100% { transform: scale(1); opacity: 1; }
         }
     </style>
+    <script>
+        function showInfo(section) {
+            alert("You clicked on " + section + "!");
+        }
+    </script>
 </head>
 <body>
     <header>
-        <div class=\"logo\">⚡ My<span>Bot</span></div>
+        <div class=\"logo\">✈️ The<span>Aeroplane Company</span></div>
         <nav>
             <a href=\"#\">Home</a>
             <a href=\"#features\">Features</a>
-            <a href=\"#contact\">Contact</a>
+            <a href=\"https://discord.gg/bqqupx7yNu\" target=\"_blank\">Invite</a>
+            <a href=\"https://github.com/applxcake/Discord-Bot-Class-12-Cs-project\" target=\"_blank\">GitHub</a>
         </nav>
     </header>
 
     <section class=\"hero\">
-        <h1>Meet Your Ultimate Discord Companion 🤖</h1>
-        <p>The most advanced, user-friendly, and customizable bot for your server!</p>
-        <a href=\"#\" class=\"cta\">Get Started</a>
+        <h1>Revolutionize Your Discord Experience</h1>
+        <p>The Aeroplane Company: Flight Booking and Beyond!</p>
+        <a href=\"https://discord.gg/bqqupx7yNu\" class=\"cta\" target=\"_blank\">Join Us</a>
     </section>
 
     <section class=\"features\" id=\"features\">
         <div class=\"feature\">
-            <h3>✨ Sleek Design</h3>
-            <p>Experience a modern interface that's easy to use and visually appealing.</p>
+            <h3>📅 Flight Booking</h3>
+            <p>Seamlessly book flights directly within your Discord server.</p>
+            <button class=\"btn\" onclick=\"showInfo('Flight Booking')\">Learn More</button>
         </div>
         <div class=\"feature\">
-            <h3>⚙️ Powerful Features</h3>
-            <p>From moderation to games, our bot has it all to keep your server lively.</p>
+            <h3>🌎 Dynamic Pricing</h3>
+            <p>Experience real-time ticket pricing based on distance calculations.</p>
+            <button class=\"btn\" onclick=\"showInfo('Dynamic Pricing')\">Learn More</button>
         </div>
         <div class=\"feature\">
-            <h3>🔒 Secure & Reliable</h3>
-            <p>Your data is safe with us, and our bot is built to perform 24/7.</p>
+            <h3>🔒 Reliable and Secure</h3>
+            <p>Trust our bot to keep your data and bookings safe.</p>
+            <button class=\"btn\" onclick=\"showInfo('Reliable and Secure')\">Learn More</button>
+        </div>
+        <div class=\"feature\">
+            <h3>💬 Intuitive Interactions</h3>
+            <p>Interact with modals and embeds designed for ease of use.</p>
+            <button class=\"btn\" onclick=\"showInfo('Intuitive Interactions')\">Learn More</button>
         </div>
     </section>
 
+    <section class=\"widgets\">
+        <div class=\"widget\" onclick=\"showInfo('Widget 1')\">Widget 1</div>
+        <div class=\"widget\" onclick=\"showInfo('Widget 2')\">Widget 2</div>
+        <div class=\"widget\" onclick=\"showInfo('Widget 3')\">Widget 3</div>
+    </section>
+
     <footer>
-        <p>&copy; 2024 MyBot. All rights reserved. <span>&#x1F916;</span></p>
+        <p>&copy; 2024 The Aeroplane Company. All rights reserved. <span>✈️</span></p>
     </footer>
 </body>
 </html>"""
