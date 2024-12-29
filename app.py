@@ -156,18 +156,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         }
     </style>
     <script>
-        function showInfo(section) {
-            alert("You clicked on " + section + "!");
+        function showFeatureDetail(feature) {
+            window.location.href = `/feature/${feature}`;
         }
 
         function widgetClick(widgetName) {
-            fetch('/widget-action', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ widget: widgetName })
-            }).then(response => response.json())
-              .then(data => alert(data.message))
-              .catch(error => alert("Error: " + error));
+            window.location.href = `/widget/${widgetName}`;
         }
     </script>
 </head>
@@ -192,29 +186,29 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         <div class="feature">
             <h3>📅 Flight Booking</h3>
             <p>Seamlessly book flights directly within your Discord server.</p>
-            <button class="btn" onclick="showInfo('Flight Booking')">Learn More</button>
+            <button class="btn" onclick="showFeatureDetail('flight-booking')">Learn More</button>
         </div>
         <div class="feature">
             <h3>🌎 Dynamic Pricing</h3>
             <p>Experience real-time ticket pricing based on distance calculations.</p>
-            <button class="btn" onclick="showInfo('Dynamic Pricing')">Learn More</button>
+            <button class="btn" onclick="showFeatureDetail('dynamic-pricing')">Learn More</button>
         </div>
         <div class="feature">
             <h3>🔒 Reliable and Secure</h3>
             <p>Trust our bot to keep your data and bookings safe.</p>
-            <button class="btn" onclick="showInfo('Reliable and Secure')">Learn More</button>
+            <button class="btn" onclick="showFeatureDetail('security')">Learn More</button>
         </div>
         <div class="feature">
             <h3>💬 Intuitive Interactions</h3>
             <p>Interact with modals and embeds designed for ease of use.</p>
-            <button class="btn" onclick="showInfo('Intuitive Interactions')">Learn More</button>
+            <button class="btn" onclick="showFeatureDetail('intuitive-interactions')">Learn More</button>
         </div>
     </section>
 
     <section class="widgets">
-        <div class="widget" onclick="widgetClick('Widget 1')">Widget 1</div>
-        <div class="widget" onclick="widgetClick('Widget 2')">Widget 2</div>
-        <div class="widget" onclick="widgetClick('Widget 3')">Widget 3</div>
+        <div class="widget" onclick="widgetClick('invite-bot')">🚀 Invite the Bot</div>
+        <div class="widget" onclick="widgetClick('documentation')">📖 Documentation</div>
+        <div class="widget" onclick="widgetClick('demo-server')">🎮 Demo Server</div>
     </section>
 
     <footer>
@@ -227,12 +221,24 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 def home():
     return render_template_string(HTML_TEMPLATE)
 
-@app.route('/widget-action', methods=['POST'])
-def widget_action():
-    from flask import request
-    data = request.json
-    widget_name = data.get('widget', 'Unknown')
-    return jsonify(message=f"You interacted with {widget_name}!")
+@app.route('/feature/<feature>')
+def feature_page(feature):
+    feature_details = {
+        "flight-booking": "Flight Booking lets you book flights directly within Discord.",
+        "dynamic-pricing": "Dynamic Pricing offers real-time ticket prices.",
+        "security": "Reliable and Secure ensures your data is safe.",
+        "intuitive-interactions": "Intuitive Interactions simplifies your experience."
+    }
+    return f"<h1>{feature_details.get(feature, 'Feature Not Found')}</h1>"
+
+@app.route('/widget/<widget>')
+def widget_page(widget):
+    widget_actions = {
+        "invite-bot": "Invite our bot to your server: <a href='https://discord.gg/bqqupx7yNu'>Click Here</a>",
+        "documentation": "Read the bot documentation: <a href='https://github.com/applxcake/Discord-Bot-Class-12-Cs-project'>Click Here</a>",
+        "demo-server": "Join the demo server to see the bot in action: <a href='https://discord.gg/bqqupx7yNu'>Click Here</a>"
+    }
+    return f"<h1>{widget_actions.get(widget, 'Widget Not Found')}</h1>"
 
 if __name__ == '__main__':
     app.run(debug=True)
