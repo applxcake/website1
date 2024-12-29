@@ -1,173 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Bot Features</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            background: url('Abstract_Gradient_Neon_Lights.jpg') no-repeat center center fixed;
-            background-size: cover;
-            overflow-x: hidden;
-        }
-
-        header {
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(0, 0, 0, 0.7);
-            animation: fadeIn 2s;
-        }
-
-        header h1 {
-            font-size: 3rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        main {
-            padding: 2rem;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            max-width: 1200px;
-            margin: auto;
-            animation: slideUp 1.5s;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        section p {
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-
-        section ul {
-            list-style: none;
-            padding: 0;
-            font-size: 1.1rem;
-        }
-
-        section ul li {
-            margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            animation: fadeIn 1.5s;
-        }
-
-        section ul li::before {
-            content: "⭐";
-            margin-right: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .feature-highlight {
-            font-weight: bold;
-            color: #FFD700;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-top: 2rem;
-            animation: fadeIn 2s;
-        }
-
-        footer p {
-            font-size: 1rem;
-        }
-
-        a {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .emoji {
-            font-size: 1.5rem;
-            margin-right: 0.5rem;
-        }
-
-        .highlight-box {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            animation: fadeIn 1.5s;
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Bot | Modern Showcase</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>✨ Welcome to My Discord Bot ✨</h1>
-        <p>🌟 Discover the amazing features that make your Discord server better!</p>
-    </header>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">BotName</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main>
-        <section id="features">
-            <h2>🚀 Features</h2>
-            <p>Our bot offers a variety of features to enhance your experience:</p>
-            <ul>
-                <li><span class="feature-highlight">Flight ticket booking</span> with dynamic pricing based on distance.</li>
-                <li>Moderation tools to keep your server safe and organized.</li>
-                <li>Fun commands to entertain your community.</li>
-                <li>Customizable notifications and alerts.</li>
-            </ul>
-        </section>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Meet <span>BotName</span></h1>
+      <p>The ultimate Discord companion for music, moderation, and fun!</p>
+      <button class="cta-button">Get Started</button>
+    </div>
+  </section>
 
-        <section id="how-it-works">
-            <h2>🔧 How It Works</h2>
-            <p>The bot uses cutting-edge algorithms and APIs to provide seamless and efficient functionality. Simply invite it to your server and start exploring its commands!</p>
-            <div class="highlight-box">
-                <p>💡 Tip: Use <strong>/help</strong> to get a list of commands after adding the bot!</p>
-            </div>
-        </section>
+  <section id="features" class="features">
+    <h2>Features</h2>
+    <div class="features-container">
+      <div class="feature-item">
+        <i class="icon">🎵</i>
+        <h3>Music</h3>
+        <p>Stream high-quality music directly to your server.</p>
+      </div>
+      <div class="feature-item">
+        <i class="icon">🤖</i>
+        <h3>Automation</h3>
+        <p>Keep your server organized with smart automation.</p>
+      </div>
+      <div class="feature-item">
+        <i class="icon">🎮</i>
+        <h3>Games</h3>
+        <p>Engage your community with fun and interactive games.</p>
+      </div>
+    </div>
+  </section>
 
-        <section id="get-started">
-            <h2>🎉 Get Started</h2>
-            <p>Click <a href="#">here</a> to invite the bot to your server and view the documentation for detailed instructions.</p>
-        </section>
-    </main>
+  <section id="about" class="about">
+    <div class="about-content">
+      <h2>About BotName</h2>
+      <p>BotName is designed to elevate your Discord experience, combining seamless integration with innovative features to bring your community closer.</p>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 My Discord Bot. All rights reserved. Built with ❤️ for the community.</p>
-    </footer>
+  <section class="cta">
+    <h2>Ready to transform your server?</h2>
+    <button class="cta-button animated">Add to Discord</button>
+  </section>
+
+  <footer class="footer">
+    <div class="social-icons">
+      <a href="#" class="social-icon">🐦</a>
+      <a href="#" class="social-icon">📘</a>
+      <a href="#" class="social-icon">📸</a>
+    </div>
+    <form class="newsletter">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p>&copy; 2024 BotName. All rights reserved.</p>
+  </footer>
 </body>
 </html>
