@@ -49,6 +49,12 @@ body {
   color: #fff;
 }
 
+/* Sections */
+section {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -89,11 +95,6 @@ body {
 }
 
 /* Features Section */
-.features {
-  padding: 5rem 2rem;
-  text-align: center;
-}
-
 .features h2 {
   font-size: 2rem;
   margin-bottom: 3rem;
@@ -125,28 +126,58 @@ body {
 
 /* About Section */
 .about {
-  padding: 5rem 2rem;
   background: linear-gradient(to right, #121212, #1e1e1e);
 }
 
 .about h2 {
-  text-align: center;
   margin-bottom: 2rem;
 }
 
 .about-content {
   max-width: 600px;
   margin: auto;
-  text-align: center;
   font-size: 1.1rem;
   line-height: 1.8;
 }
 
+/* Contact Section */
+.contact {
+  background: #1e1e1e;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #bbb;
+}
+
+.contact .cta-button {
+  padding: 0.8rem 2rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact .cta-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
 /* CTA Section */
 .cta {
-  text-align: center;
-  padding: 3rem 2rem;
   background: #1e1e1e;
+  padding: 3rem 2rem;
 }
 
 .cta h2 {
