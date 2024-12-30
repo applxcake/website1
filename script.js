@@ -1,41 +1,29 @@
-// Smooth Scroll
-document.querySelectorAll('.nav-links a').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    target.scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
+// Import Locomotive Scroll (assuming it's installed via npm or a CDN is used)
 import LocomotiveScroll from 'locomotive-scroll';
-import gsap from 'gsap';
 
+// Initialize Locomotive Scroll
 const scroll = new LocomotiveScroll({
   el: document.querySelector('[data-scroll-container]'),
   smooth: true,
-  lerp: 0.1, // Adjust for smoother scrolling
+  getDirection: true,
 });
 
-// GSAP Animations
-scroll.on('call', (func) => {
-  if (func === 'animateHero') {
-    gsap.fromTo(
-      '.hero-content',
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
-    );
-  }
+// Optional: Log scrolling direction
+scroll.on('scroll', (event) => {
+  console.log('Scrolling direction:', event.direction);
 });
 
-// Trigger GSAP animations for sections on enter
-scroll.on('scroll', ({ currentElements }) => {
-  for (const key in currentElements) {
-    if (currentElements[key].el.classList.contains('features-container')) {
-      gsap.fromTo(
-        '.feature-item',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.2 }
-      );
+// Animate sections on scroll
+const sections = document.querySelectorAll('[data-scroll-section]');
+
+sections.forEach((section, index) => {
+  section.style.opacity = 0;
+  section.style.transform = 'translateY(50px)';
+  scroll.on('call', (func) => {
+    if (func === `section-${index}`) {
+      section.style.opacity = 1;
+      section.style.transform = 'translateY(0)';
+      section.style.transition = 'all 0.6s ease';
     }
-  }
+  });
 });
