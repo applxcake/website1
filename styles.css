@@ -10,7 +10,6 @@ body {
   color: #fff;
   background-color: #121212;
   overflow-x: hidden;
-  scroll-behavior: smooth; /* Added for smooth native scrolling */
 }
 
 /* Navbar */
@@ -51,27 +50,19 @@ body {
 }
 
 /* Sections */
-section {
+[data-scroll-section] {
+  min-height: 100vh;
   padding: 5rem 2rem;
   text-align: center;
-  position: relative; /* Ensure consistent positioning */
 }
 
 /* Hero Section */
 .hero {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   background: linear-gradient(to bottom, #000, #121212);
-  position: relative;
-}
-
-.hero-content {
-  max-width: 800px; /* Ensure content is centered nicely */
-  margin: auto;
-  padding: 0 1rem;
 }
 
 .hero-content h1 {
@@ -104,23 +95,13 @@ section {
 }
 
 /* Features Section */
-.features h2 {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-}
-
 .features-container {
   display: flex;
-  flex-wrap: wrap; /* Adjust for responsiveness */
-  justify-content: center; /* Ensure center alignment */
+  justify-content: space-around;
   gap: 2rem;
-  max-width: 1200px;
-  margin: auto;
 }
 
 .feature-item {
-  flex: 1 1 calc(33% - 2rem); /* Ensure responsive sizing */
-  max-width: 300px;
   background: #1e1e1e;
   padding: 2rem;
   border-radius: 10px;
@@ -132,56 +113,13 @@ section {
   transform: translateY(-10px);
 }
 
-.icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  display: block;
+/* Smooth Scrolling Effects */
+[data-scroll-container] {
+  overflow: hidden;
 }
 
-/* Advanced Features */
-.advanced-features {
-  background: #121212;
-}
-
-.advanced-container {
-  display: flex;
-  flex-wrap: wrap; /* Adjust for responsiveness */
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.advanced-item {
-  flex: 1 1 calc(33% - 2rem); /* Ensure responsive sizing */
-  max-width: 300px;
-  background: #1e1e1e;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.advanced-item:hover {
-  transform: translateY(-10px);
-}
-
-/* Contact Section */
-.contact {
-  background: #1e1e1e;
-  padding: 5rem 2rem;
-  text-align: center;
-}
-
-.contact h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.contact p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: #bbb;
+[data-scroll-section] {
+  transform: translate3d(0, 0, 0);
 }
 
 /* Footer */
@@ -189,31 +127,4 @@ section {
   padding: 2rem;
   background: #000;
   text-align: center;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.social-icon {
-  font-size: 1.5rem;
-  color: #bbb;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-  color: #fff;
-}
-
-/* Scroll Animations Fix */
-[data-scroll-section] {
-  min-height: 100vh; /* Ensure full sections on scroll */
-  padding: 5rem 0;
-}
-
-[data-scroll] {
-  will-change: transform, opacity;
 }
