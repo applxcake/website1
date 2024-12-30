@@ -50,14 +50,14 @@ body {
 }
 
 /* Sections */
-[data-scroll-section] {
-  min-height: 100vh;
+section {
   padding: 5rem 2rem;
   text-align: center;
 }
 
 /* Hero Section */
 .hero {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,6 +95,11 @@ body {
 }
 
 /* Features Section */
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
 .features-container {
   display: flex;
   justify-content: space-around;
@@ -113,13 +118,84 @@ body {
   transform: translateY(-10px);
 }
 
-/* Smooth Scrolling Effects */
-[data-scroll-container] {
-  overflow: hidden;
+.icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
 }
 
-[data-scroll-section] {
-  transform: translate3d(0, 0, 0);
+/* About Section */
+.about {
+  background: linear-gradient(to right, #121212, #1e1e1e);
+}
+
+.about h2 {
+  margin-bottom: 2rem;
+}
+
+.about-content {
+  max-width: 600px;
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Contact Section */
+.contact {
+  background: #1e1e1e;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #bbb;
+}
+
+.contact .cta-button {
+  padding: 0.8rem 2rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact .cta-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
+/* CTA Section */
+.cta {
+  background: #1e1e1e;
+  padding: 3rem 2rem;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.animated {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 /* Footer */
@@ -127,4 +203,42 @@ body {
   padding: 2rem;
   background: #000;
   text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #fff;
+}
+
+.newsletter input {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.newsletter button:hover {
+  background: #3e8e41;
 }
