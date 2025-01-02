@@ -1,39 +1,19 @@
-from fastapi import FastAPI, HTTPException
+from flask import Flask, Response
 import requests
 
-app = FastAPI()
+app = Flask(__name__)
 
-# YouTube Data API Key
-YOUTUBE_API_KEY = "AIzaSyCdOxKAx_lZdyo2k96Gv5mj-qJlCg3ALfQ"
+# URL of the raw HTML file in your GitHub repository
+HTML_URL = "https://raw.githubusercontent.com/applxcake/website1/refs/heads/main/index.html"
 
-@app.get("/search")
-def search_songs(query: str):
-    """Search for songs using YouTube API."""
-    url = f"https://www.googleapis.com/youtube/v3/search"
-    params = {
-        "part": "snippet",
-        "q": query + " song",
-        "type": "video",
-        "key": YOUTUBE_API_KEY,
-        "maxResults": 10,
-    }
-    response = requests.get(url, params=params)
-    if response.status_code != 200:
-        raise HTTPException(status_code=500, detail="YouTube API Error")
-    
-    data = response.json()
-    results = [
-        {
-            "id": item["id"]["videoId"],
-            "title": item["snippet"]["title"],
-            "thumbnail": item["snippet"]["thumbnails"]["default"]["url"],
-            "channel": item["snippet"]["channelTitle"],
-        }
-        for item in data.get("items", [])
-    ]
-    return results
+@app.route('/')
+def home():
+    # Fetch the HTML file from GitHub
+    response = requests.get(HTML_URL)
+    if response.status_code == 200:
+        return Response(response.content, content_type="text/html")
+    else:
+        return "Failed to load the page. Please try again later.", 500
 
-@app.get("/stream/{video_id}")
-def stream_song(video_id: str):
-    """Provide the direct YouTube link for streaming."""
-    return {"url": f"https://www.youtube.com/watch?v={video_id}"}
+if __name__ == '__main__':
+    app.run(debug=True)
