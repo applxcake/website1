@@ -46,7 +46,17 @@ body {
 }
 
 /* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+  animation: fadeInUp 1s ease-in-out;
+}
+
 .hero-content {
+  max-width: 600px;
   animation: fadeInUp 1s ease-in-out;
 }
 
@@ -56,6 +66,13 @@ body {
 }
 
 .cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background: #3e8e41;
+  border-radius: 5px;
+  text-decoration: none;
   transition: all 0.3s ease;
   animation: pulse 2s infinite;
 }
@@ -65,7 +82,18 @@ body {
   50% { transform: scale(1.1); }
 }
 
+.cta-button:hover {
+  background: #2c6a2f;
+  transform: scale(1.1);
+}
+
 /* Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 4rem 2rem;
+}
+
 .feature-item {
   background: #1e1e1e;
   padding: 2rem;
@@ -81,6 +109,13 @@ body {
 }
 
 /* Footer */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background: #1a1a1a;
+  margin-top: 3rem;
+}
+
 .social-icon {
   font-size: 1.5rem;
   color: #bbb;
@@ -92,7 +127,48 @@ body {
   transform: rotate(360deg);
 }
 
-.newsletter button:hover {
+.newsletter {
+  margin-top: 1rem;
+}
+
+.newsletter input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  margin-right: 0.5rem;
+}
+
+.newsletter button {
+  padding: 0.5rem 1rem;
+  border: none;
   background: #3e8e41;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.newsletter button:hover {
+  background: #2c6a2f;
   transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes slideLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bouncing-element {
+  animation: bounce 2s infinite;
 }
